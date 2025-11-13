@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Arth Oaks Ventures LLC | Real Estate Investment & Consulting</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Arth Oaks Ventures LLC is a real estate investment and consulting firm focused on building value through smart, risk-aware real estate strategies."
+  />
+
+  <style>
+    :root {
+      /* Updated color palette: deep navy + teal + soft neutrals */
+      --bg-light: #f3f4f6;
+      --bg-white: #ffffff;
+      --primary: #124559; /* deep teal-navy */
+      --primary-soft: #dbeafe;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --border-soft: #e5e7eb;
+      --accent: #16a3b8; /* teal accent */
+      --shadow-soft: 0 16px 40px rgba(15, 23, 42, 0.06);
+      --radius-xl: 1.25rem;
+      --radius-lg: 0.9rem;
+      --transition-fast: 0.2s ease;
+      --max-width: 1120px;
+      --header-height: 72px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: var(--bg-light);
+      color: var(--text-main);
+      line-height: 1.7;
+      font-size: 17px; /* slightly larger base font */
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Layout helpers */
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    section {
+      scroll-margin-top: calc(var(--header-height) + 16px);
+      padding: 4.5rem 0;
+    }
+
+    .section-heading {
+      font-size: 2rem;
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.03em;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      max-width: 640px;
+      margin-bottom: 2.5rem;
+      font-size: 1rem;
+    }
+
+    /* Header / Nav */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: rgba(243, 244, 246, 0.92);
+      border-bottom: 1px solid rgba(229, 231, 235, 0.9);
+    }
+
+    .nav {
+      height: var(--header-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .nav-logo {
+      font-weight: 700;
+      font-size: 1.15rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-logo-badge {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #22c1c3, #124559);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.35rem;
+      align-items: center;
+      font-size: 0.98rem;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      padding: 0.25rem 0;
+      position: relative;
+      transition: color var(--transition-fast);
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.25rem;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 999px;
+      transition: width var(--transition-fast);
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      padding: 0.5rem 0.95rem;
+      border-radius: 999px;
+      border: 1px solid rgba(18, 69, 89, 0.3);
+      font-size: 0.9rem;
+      background: linear-gradient(135deg, var(--accent), var(--primary));
+      color: #ffffff;
+      box-shadow: 0 8px 18px rgba(18, 69, 89, 0.35);
+      cursor: pointer;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+        filter var(--transition-fast);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .nav-cta:hover {
+      filter: brightness(1.05);
+      transform: translateY(-1px);
+      box-shadow: 0 12px 26px rgba(18, 69, 89, 0.55);
+    }
+
+    .nav-cta span {
+      font-size: 1.05rem;
+      transform: translateY(1px);
+    }
+
+    /* Mobile nav */
+    .nav-toggle {
+      display: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: 1px solid #d1d5db;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      background: #ffffff;
+    }
+
+    .nav-toggle-line {
+      width: 16px;
+      height: 2px;
+      background: #111827;
+      border-radius: 999px;
+      position: relative;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .nav-toggle-line::before,
+    .nav-toggle-line::after {
+      content: "";
+      position: absolute;
+      width: 16px;
+      height: 2px;
+      background: #111827;
+      border-radius: 999px;
+      left: 0;
+      transition: transform 0.2s ease, opacity 0.2s ease, top 0.2s ease,
+        bottom 0.2s ease;
+    }
+
+    .nav-toggle-line::before {
+      top: -5px;
+    }
+
+    .nav-toggle-line::after {
+      bottom: -5px;
+    }
+
+    .nav-toggle.active .nav-toggle-line {
+      background: transparent;
+    }
+
+    .nav-toggle.active .nav-toggle-line::before {
+      top: 0;
+      transform: rotate(45deg);
+    }
+
+    .nav-toggle.active .nav-toggle-line::after {
+      bottom: 0;
+      transform: rotate(-45deg);
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        position: absolute;
+        inset-inline: 1.5rem;
+        top: calc(var(--header-height) - 6px);
+        background: rgba(255, 255, 255, 0.98);
+        flex-direction: column;
+        align-items: flex-start;
+        border-radius: 1rem;
+        padding: 0.9rem 1.1rem 1.1rem;
+        border: 1px solid rgba(229, 231, 235, 0.95);
+        box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+        transform-origin: top;
+        transform: scaleY(0.9);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.15s ease, transform 0.18s ease;
+        backdrop-filter: blur(10px);
+      }
+
+      .nav-links.show {
+        opacity: 1;
+        pointer-events: auto;
+        transform: scaleY(1);
+      }
+
+      .nav-links a {
+        padding: 0.3rem 0;
+      }
+
+      .nav-cta {
+        width: 100%;
+        justify-content: center;
+        margin-top: 0.2rem;
+      }
+
+      .nav-toggle {
+        display: inline-flex;
+      }
+    }
+
+    /* Hero */
+    #home {
+      padding-top: 4.75rem;
+      padding-bottom: 4.75rem;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      background: #e0f2fe;
+      color: #0f172a;
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #16a34a;
+    }
+
+    .hero-title {
+      font-size: clamp(2.2rem, 3.1vw, 2.7rem);
+      line-height: 1.15;
+      margin-bottom: 0.9rem;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-title span {
+      display: block;
+      margin-top: 0.2rem;
+      color: var(--primary);
+      font-weight: 500;
+      font-size: 1.1rem;
+    }
+
+    .hero-tagline {
+      font-size: 1.03rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-text {
+      color: var(--text-muted);
+      max-width: 34rem;
+      font-size: 1rem;
+      margin-bottom: 1.7rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      align-items: center;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.8rem 1.4rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-size: 0.98rem;
+      font-weight: 500;
+      transition: background var(--transition-fast), transform var(--transition-fast),
+        box-shadow var(--transition-fast), border-color var(--transition-fast),
+        color var(--transition-fast);
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--primary));
+      color: #ffffff;
+      box-shadow: 0 14px 30px rgba(18, 69, 89, 0.4);
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.04);
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(18, 69, 89, 0.55);
+    }
+
+    .btn-secondary {
+      background: #ffffff;
+      color: var(--text-main);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+    }
+
+    .btn-secondary:hover {
+      background: #f9fafb;
+      border-color: var(--accent);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(148, 163, 184, 0.35);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.6rem;
+      margin-top: 1.7rem;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    .hero-meta-item strong {
+      display: block;
+      font-size: 0.96rem;
+      color: var(--text-main);
+    }
+
+    .hero-visual {
+      background: radial-gradient(circle at 20% 0, #e0f2fe, #f3f4f6);
+      border-radius: var(--radius-xl);
+      padding: 1.2rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+    }
+
+    .hero-visual-inner {
+      border-radius: calc(var(--radius-xl) - 0.4rem);
+      background: linear-gradient(145deg, #ffffff 0%, #e0f2fe 52%, #ffffff 100%);
+      padding: 1.1rem 1.1rem 1.2rem;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+    }
+
+    .hero-visual-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .hero-visual-title {
+      font-size: 0.88rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+    }
+
+    .hero-visual-pill {
+      font-size: 0.72rem;
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(18, 69, 89, 0.06);
+      color: var(--primary);
+    }
+
+    .hero-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.85rem;
+    }
+
+    .hero-stat-card {
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 0.9rem;
+      padding: 0.65rem 0.7rem;
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      font-size: 0.82rem;
+    }
+
+    .hero-stat-label {
+      color: var(--text-muted);
+      font-size: 0.76rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .hero-stat-value {
+      font-weight: 600;
+      font-size: 0.96rem;
+      color: var(--primary);
+    }
+
+    .hero-stat-tag {
+      margin-top: 0.15rem;
+      font-size: 0.73rem;
+      color: #4b5563;
+    }
+
+    .hero-bands {
+      margin-top: 0.9rem;
+      padding-top: 0.7rem;
+      border-top: 1px dashed rgba(148, 163, 184, 0.45);
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .hero-band-pill {
+      padding: 0.15rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-visual {
+        order: -1;
+      }
+    }
+
+    @media (max-width: 640px) {
+      #home {
+        padding-top: 3.75rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        width: 100%;
+      }
+    }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .about-highlight {
+      background: var(--bg-white);
+      border-radius: var(--radius-lg);
+      padding: 1.4rem 1.5rem;
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
+      font-size: 0.98rem;
+    }
+
+    .about-list {
+      list-style: none;
+      margin-top: 1rem;
+      display: grid;
+      gap: 0.6rem;
+    }
+
+    .about-list li {
+      display: flex;
+      gap: 0.5rem;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    .about-list span {
+      margin-top: 0.15rem;
+      color: var(--accent);
+      font-size: 0.85rem;
+    }
+
+    .about-side {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .about-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.35rem;
+    }
+
+    .about-pill {
+      padding: 0.15rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.8);
+      font-size: 0.78rem;
+      background: rgba(255, 255, 255, 0.92);
+    }
+
+    @media (max-width: 840px) {
+      .about-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    /* Services */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1.2rem;
+    }
+
+    .card {
+      background: var(--bg-white);
+      border-radius: var(--radius-lg);
+      padding: 1.2rem 1.2rem 1.35rem;
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 190px;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+        border-color var(--transition-fast);
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.16);
+      border-color: rgba(18, 69, 89, 0.4);
+    }
+
+    .card-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .card-title {
+      font-size: 1.02rem;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+
+    .card-text {
+      font-size: 0.94rem;
+      color: var(--text-muted);
+    }
+
+    .card-tag {
+      margin-top: 0.9rem;
+      font-size: 0.82rem;
+      color: var(--accent);
+    }
+
+    @media (max-width: 960px) {
+      .cards-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .cards-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    /* Portfolio */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.15rem;
+    }
+
+    .project-card {
+      background: var(--bg-white);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-soft);
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      font-size: 0.94rem;
+    }
+
+    .project-image {
+      height: 160px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .project-img-tag {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .project-label {
+      position: absolute;
+      bottom: 0.75rem;
+      left: 0.85rem;
+      right: 0.85rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.82rem;
+      color: #f9fafb;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+    }
+
+    .project-city {
+      font-weight: 600;
+    }
+
+    .project-type {
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(209, 213, 219, 0.9);
+    }
+
+    .project-body {
+      padding: 0.95rem 1rem 1.1rem;
+    }
+
+    .project-metrics {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.75rem;
+      font-size: 0.84rem;
+      margin-bottom: 0.6rem;
+      color: var(--text-muted);
+    }
+
+    .project-metrics strong {
+      display: block;
+      color: var(--text-main);
+      font-size: 0.96rem;
+    }
+
+    .project-note {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 960px) {
+      .portfolio-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .portfolio-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    /* Invest With Us */
+    .invest-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .invest-text {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .invest-highlights {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin-top: 0.85rem;
+    }
+
+    .invest-highlight-card {
+      background: var(--bg-white);
+      border-radius: 0.8rem;
+      padding: 0.75rem 0.8rem;
+      border: 1px dashed rgba(148, 163, 184, 0.95);
+      font-size: 0.84rem;
+    }
+
+    .invest-highlight-card strong {
+      display: block;
+      font-size: 0.9rem;
+      margin-bottom: 0.22rem;
+      color: var(--text-main);
+    }
+
+    .invest-list {
+      list-style: none;
+      margin-top: 1.1rem;
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    .invest-list li {
+      display: flex;
+      gap: 0.5rem;
+      align-items: flex-start;
+      font-size: 0.94rem;
+    }
+
+    .invest-list span {
+      color: var(--accent);
+      font-size: 0.95rem;
+      transform: translateY(2px);
+    }
+
+    .invest-panel {
+      background: radial-gradient(circle at 0% 0%, #1d8a99, #124559);
+      color: #e0f2fe;
+      border-radius: var(--radius-lg);
+      padding: 1.2rem 1.25rem 1.4rem;
+      box-shadow: 0 20px 45px rgba(18, 69, 89, 0.7);
+    }
+
+    .invest-panel h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .invest-panel p {
+      font-size: 0.9rem;
+      margin-bottom: 0.9rem;
+      color: #dbeafe;
+    }
+
+    .invest-panel small {
+      font-size: 0.78rem;
+      opacity: 0.98;
+    }
+
+    .invest-panel .btn-primary {
+      margin-top: 1rem;
+      box-shadow: 0 12px 30px rgba(15, 118, 110, 0.7);
+      background: #f9fafb;
+      color: var(--primary);
+      border: 1px solid rgba(191, 219, 254, 0.8);
+    }
+
+    .invest-panel .btn-primary:hover {
+      background: #ffffff;
+      box-shadow: 0 16px 36px rgba(191, 219, 254, 0.95);
+    }
+
+    @media (max-width: 960px) {
+      .invest-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .invest-highlights {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .invest-highlights {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    /* Contact */
+    .contact-section-inner {
+      max-width: 760px;
+    }
+
+    .contact-card {
+      background: var(--bg-white);
+      border-radius: var(--radius-lg);
+      padding: 1.7rem 1.6rem;
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      gap: 1rem;
+    }
+
+    .contact-card p {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+    }
+
+    .contact-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.7rem 1rem;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      font-size: 0.94rem;
+    }
+
+    .contact-email span {
+      background: var(--primary);
+      color: #ffffff;
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+    }
+
+    .contact-note {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+    }
+
+    /* Footer */
+    footer {
+      padding: 1.7rem 0 1.9rem;
+      border-top: 1px solid rgba(209, 213, 219, 0.9);
+      background: #ffffff;
+      margin-top: 2rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.84rem;
+      color: var(--text-muted);
+    }
+
+    .social-links {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .social-pill {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      border: 1px solid #d1d5db;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.82rem;
+      background: #f9fafb;
+      cursor: pointer;
+      transition: background 0.15s ease, border-color 0.15s ease,
+        transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .social-pill:hover {
+      background: #ffffff;
+      border-color: var(--accent);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(148, 163, 184, 0.5);
+    }
+
+    @media (max-width: 640px) {
+      footer {
+        padding-inline: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header / Nav -->
+  <header>
+    <div class="container">
+      <nav class="nav">
+        <a href="#home" class="nav-logo">
+          <span class="nav-logo-badge">AO</span>
+          <span>Arth Oaks Ventures</span>
+        </a>
+        <button class="nav-toggle" aria-label="Toggle navigation">
+          <div class="nav-toggle-line"></div>
+        </button>
+        <div class="nav-links" id="nav-links">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#portfolio">Portfolio</a>
+          <a href="#invest">Invest With Us</a>
+          <a href="#contact">Contact</a>
+          <button class="nav-cta" data-scroll="#invest">
+            Invest <span>↗</span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main>
+    <section id="home">
+      <div class="container">
+        <div class="hero">
+          <div>
+            <div class="hero-badge">
+              <span class="hero-badge-dot"></span>
+              Real estate investment & consulting
+            </div>
+            <h1 class="hero-title">
+              Arth Oaks Ventures LLC
+              <span>Building Value Through Smart Real Estate Investments</span>
+            </h1>
+            <p class="hero-tagline">
+              Thoughtful capital, disciplined underwriting, and long-term alignment with investors and partners.
+            </p>
+            <p class="hero-text">
+              Arth Oaks Ventures LLC is a real estate investment and consulting firm focused on helping investors and
+              property owners grow through data-driven insights, risk-aware strategies, and rigorous execution across
+              every stage of the investment lifecycle.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#invest" class="btn-primary">Invest With Us</a>
+              <a href="#contact" class="btn-secondary">Get in Touch</a>
+            </div>
+
+            <div class="hero-meta">
+              <div class="hero-meta-item">
+                <strong>Investor-first approach</strong>
+                Aligned incentives, transparent communication, and conservative assumptions.
+              </div>
+              <div class="hero-meta-item">
+                <strong>Focus on fundamentals</strong>
+                Markets, operators, and assets selected through disciplined, repeatable frameworks.
+              </div>
+            </div>
+          </div>
+
+          <aside class="hero-visual" aria-hidden="true">
+            <div class="hero-visual-inner">
+              <div class="hero-visual-header">
+                <div class="hero-visual-title">Sample Portfolio Snapshot</div>
+                <div class="hero-visual-pill">Illustrative Only</div>
+              </div>
+              <div class="hero-stats-grid">
+                <div class="hero-stat-card">
+                  <div class="hero-stat-label">Capital Placed</div>
+                  <div class="hero-stat-value">$12.4M</div>
+                  <div class="hero-stat-tag">Equity & JV structures</div>
+                </div>
+                <div class="hero-stat-card">
+                  <div class="hero-stat-label">Target IRR Range</div>
+                  <div class="hero-stat-value">12–18%</div>
+                  <div class="hero-stat-tag">Risk-adjusted returns</div>
+                </div>
+                <div class="hero-stat-card">
+                  <div class="hero-stat-label">Primary Focus</div>
+                  <div class="hero-stat-value">Multifamily</div>
+                  <div class="hero-stat-tag">Value-add & core-plus</div>
+                </div>
+                <div class="hero-stat-card">
+                  <div class="hero-stat-label">Hold Horizon</div>
+                  <div class="hero-stat-value">3–10 yrs</div>
+                  <div class="hero-stat-tag">Aligned with strategy</div>
+                </div>
+              </div>
+
+              <div class="hero-bands">
+                <div class="hero-band-pill">Sunbelt & growth markets</div>
+                <div class="hero-band-pill">Institutional-style underwriting</div>
+                <div class="hero-band-pill">Hands-on asset oversight</div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <div class="container">
+        <h2 class="section-heading">About Arth Oaks Ventures</h2>
+        <p class="section-subtitle">
+          Arth Oaks Ventures LLC is a trusted partner for investors, owners, and operating teams seeking to build
+          durable value in real estate. We combine analytical rigor with on-the-ground experience to make decisions that
+          balance growth and preservation of capital.
+        </p>
+
+        <div class="about-grid">
+          <div class="about-highlight">
+            <p>
+              We believe that successful real estate investing is built on disciplined research, thoughtful risk
+              management, and clear communication. Arth Oaks works closely with investors and partners to structure
+              opportunities that are straightforward, transparent, and aligned with long-term objectives.
+            </p>
+            <ul class="about-list">
+              <li>
+                <span>●</span>
+                Data-driven insights into markets, submarkets, and property-level performance.
+              </li>
+              <li>
+                <span>●</span>
+                Risk-aware underwriting that prioritizes downside protection alongside growth.
+              </li>
+              <li>
+                <span>●</span>
+                Partnership-focused mindset, from first conversation through execution and reporting.
+              </li>
+            </ul>
+          </div>
+          <div class="about-side">
+            <div>
+              We collaborate with individual investors, family offices, and operating partners who value thoughtful,
+              fundamentals-driven real estate strategies. Our work spans deal sourcing, analysis, execution, and
+              long-term asset oversight.
+            </div>
+            <div>
+              <strong>What guides us:</strong>
+              <div class="about-pill-row">
+                <span class="about-pill">Integrity & transparency</span>
+                <span class="about-pill">Capital preservation</span>
+                <span class="about-pill">Alignment of incentives</span>
+                <span class="about-pill">Long-term partnerships</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services">
+      <div class="container">
+        <h2 class="section-heading">Services</h2>
+        <p class="section-subtitle">
+          Arth Oaks provides real estate investment and advisory services across the full investment lifecycle — from
+          market selection and due diligence to portfolio construction and partnership structuring.
+        </p>
+
+        <div class="cards-grid">
+          <article class="card">
+            <div>
+              <div class="card-icon">📊</div>
+              <h3 class="card-title">Real Estate Investment Advisory</h3>
+              <p class="card-text">
+                Transaction support and guidance on acquisitions, dispositions, and capital deployment strategies across
+                multifamily and other income-producing assets.
+              </p>
+            </div>
+            <div class="card-tag">Strategy, underwriting & capital planning</div>
+          </article>
+
+          <article class="card">
+            <div>
+              <div class="card-icon">🔍</div>
+              <h3 class="card-title">Market Research & Due Diligence</h3>
+              <p class="card-text">
+                Independent research on markets, deals, and operators, focusing on fundamentals, demand drivers, and
+                risk factors that inform investment decisions.
+              </p>
+            </div>
+            <div class="card-tag">Quantitative & qualitative analysis</div>
+          </article>
+
+          <article class="card">
+            <div>
+              <div class="card-icon">📁</div>
+              <h3 class="card-title">Portfolio Optimization</h3>
+              <p class="card-text">
+                Portfolio reviews, scenario modeling, and recommendations to refine holdings, rebalance risk, and
+                support long-term return objectives.
+              </p>
+            </div>
+            <div class="card-tag">Hold/sell decisions & allocations</div>
+          </article>
+
+          <article class="card">
+            <div>
+              <div class="card-icon">🤝</div>
+              <h3 class="card-title">Joint Venture & Partnership Consulting</h3>
+              <p class="card-text">
+                Structuring support for JV relationships and operating partnerships, including incentive alignment, fee
+                structures, and governance.
+              </p>
+            </div>
+            <div class="card-tag">Aligned, transparent partnership terms</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section id="portfolio">
+      <div class="container">
+        <h2 class="section-heading">Portfolio & Project Examples</h2>
+        <p class="section-subtitle">
+          The following sample projects are illustrative only and designed to highlight the types of markets, assets,
+          and strategies Arth Oaks focuses on. Actual investments and performance will vary.
+        </p>
+
+        <div class="portfolio-grid">
+          <article class="project-card">
+            <div class="project-image">
+              <!-- Local placeholder image (add your own file under /images) -->
+              <img
+                src="images/austin-multifamily.jpg"
+                alt="Austin, TX multifamily property"
+                class="project-img-tag"
+              />
+              <div class="project-label">
+                <div class="project-city">Austin, TX</div>
+                <div class="project-type">Multifamily Value-Add</div>
+              </div>
+            </div>
+            <div class="project-body">
+              <div class="project-metrics">
+                <div>
+                  <span>Target Equity</span>
+                  <strong>$3.5M</strong>
+                </div>
+                <div>
+                  <span>Business Plan</span>
+                  <strong>Unit upgrades</strong>
+                </div>
+              </div>
+              <p class="project-note">
+                1980s-vintage garden-style community with a focus on interior renovations, operational efficiencies, and
+                modest common area enhancements.
+              </p>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-image">
+              <img
+                src="images/phoenix-core-plus.jpg"
+                alt="Phoenix, AZ core-plus multifamily"
+                class="project-img-tag"
+              />
+              <div class="project-label">
+                <div class="project-city">Phoenix, AZ</div>
+                <div class="project-type">Core-Plus Multifamily</div>
+              </div>
+            </div>
+            <div class="project-body">
+              <div class="project-metrics">
+                <div>
+                  <span>Target LTV</span>
+                  <strong>55–60%</strong>
+                </div>
+                <div>
+                  <span>Hold Period</span>
+                  <strong>7–10 yrs</strong>
+                </div>
+              </div>
+              <p class="project-note">
+                Stabilized institutional-quality asset with focus on long-term income, moderate rent growth, and prudent
+                leverage levels.
+              </p>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-image">
+              <img
+                src="images/raleigh-jv.jpg"
+                alt="Raleigh–Durham JV partnership property"
+                class="project-img-tag"
+              />
+              <div class="project-label">
+                <div class="project-city">Raleigh–Durham, NC</div>
+                <div class="project-type">JV Partnership</div>
+              </div>
+            </div>
+            <div class="project-body">
+              <div class="project-metrics">
+                <div>
+                  <span>Structure</span>
+                  <strong>Co-invest JV</strong>
+                </div>
+                <div>
+                  <span>Focus</span>
+                  <strong>Cash flow</strong>
+                </div>
+              </div>
+              <p class="project-note">
+                Partnership with experienced local operator in growth corridor targeting stable cash yield and
+                opportunity for strategic value creation.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Invest With Us -->
+    <section id="invest">
+      <div class="container">
+        <h2 class="section-heading">Invest With Us</h2>
+        <p class="section-subtitle">
+          Arth Oaks works with individual investors, family offices, and operating partners who value clear
+          communication, conservative underwriting, and disciplined execution.
+        </p>
+
+        <div class="invest-layout">
+          <div class="invest-text">
+            <p>
+              We partner with investors, family offices, and joint venture partners seeking thoughtfully structured
+              exposure to real estate. Our approach emphasizes clarity around risk, return drivers, and execution plans,
+              so that each investment can be evaluated on its merits.
+            </p>
+            <p>
+              We focus on select markets and strategies where we believe fundamentals, operator quality, and business
+              plans align to create resilient, risk-adjusted outcomes.
+            </p>
+
+            <div class="invest-highlights">
+              <div class="invest-highlight-card">
+                <strong>Transparent Underwriting</strong>
+                Clear assumptions, sensitivity analyses, and documentation for each opportunity.
+              </div>
+              <div class="invest-highlight-card">
+                <strong>Conservative Assumptions</strong>
+                Emphasis on durability of cash flows, not just pro forma projections.
+              </div>
+              <div class="invest-highlight-card">
+                <strong>Aligned Incentives</strong>
+                Co-investment and structures designed to keep incentives in sync over the full life of the investment.
+              </div>
+            </div>
+
+            <ul class="invest-list">
+              <li>
+                <span>✓</span>
+                Co-invest alongside experienced operators and partners.
+              </li>
+              <li>
+                <span>✓</span>
+                Access curated multifamily and value-add opportunities in carefully selected markets.
+              </li>
+              <li>
+                <span>✓</span>
+                Receive structured updates and clear reporting throughout the life of an investment.
+              </li>
+            </ul>
+          </div>
+
+          <aside class="invest-panel">
+            <h3>Ready to explore an investment fit?</h3>
+            <p>
+              Share a bit about your goals, investment horizon, and preferred structures. We will follow up to determine
+              whether there is a thoughtful, mutually aligned way to work together.
+            </p>
+            <small>
+              This page is for informational purposes only and does not constitute an offer to sell or a solicitation of
+              an offer to buy any security. Any offering will be made only via formal offering materials.
+            </small>
+            <br />
+            <a href="#contact" class="btn-primary" id="invest-cta">
+              Submit Investor Inquiry
+            </a>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="container contact-section-inner">
+        <h2 class="section-heading">Contact</h2>
+        <p class="section-subtitle">
+          Whether you are an investor, operator, agent, or advisor, we welcome thoughtful conversations about potential
+          alignment and collaboration.
+        </p>
+
+        <div class="contact-card">
+          <p>
+            For investment inquiries, partnership discussions, or general questions, please reach out using the email
+            below. We appreciate warm introductions and long-term relationships.
+          </p>
+
+          <a class="contact-email" href="mailto:info@arthoaksventures.com">
+            <span>@</span>
+            info@arthoaksventures.com
+          </a>
+
+          <p class="contact-note">
+            Agents, partners, and investors are all welcome to connect with Arth Oaks Ventures LLC.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-inner">
+      <div>
+        © 2025 Arth Oaks Ventures LLC. All rights reserved.
+      </div>
+      <div class="social-links" aria-label="Social media links">
+        <!-- Replace '#' with your actual profiles -->
+        <a href="#" class="social-pill" title="LinkedIn">
+          in
+        </a>
+        <a href="#" class="social-pill" title="X / Twitter">
+          x
+        </a>
+        <a href="mailto:info@arthoaksventures.com" class="social-pill" title="Email">
+          @
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const navToggle = document.querySelector(".nav-toggle");
+    const navLinks = document.getElementById("nav-links");
+
+    navToggle.addEventListener("click", () => {
+      navToggle.classList.toggle("active");
+      navLinks.classList.toggle("show");
+    });
+
+    // Close nav after clicking a link on mobile
+    navLinks.addEventListener("click", (e) => {
+      if (e.target.tagName === "A" || e.target.closest(".nav-cta")) {
+        navToggle.classList.remove("active");
+        navLinks.classList.remove("show");
+      }
+    });
+
+    // Smooth scroll for elements with data-scroll attribute (fallback for older browsers)
+    document.querySelectorAll("[data-scroll]").forEach((el) => {
+      el.addEventListener("click", (e) => {
+        e.preventDefault();
+        const target = document.querySelector(el.getAttribute("data-scroll"));
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
